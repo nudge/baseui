@@ -59,7 +59,7 @@ describe('Stateless radiogroup', function() {
   });
 
   test('should check only radio button, which equals to selected value', function() {
-    jest.mock('./radio', () => jest.fn(() => <div>test</div>));
+    jest.mock('../radio', () => jest.fn(() => <div>test</div>));
     const {
       StyledRoot,
       StyledLabel,
@@ -67,7 +67,7 @@ describe('Stateless radiogroup', function() {
       StyledInput,
       RadioGroup,
       StyledRadio,
-    } = require('./index');
+    } = require('../index');
     allProps.value = '2';
     allProps.overrides = overrides;
     overrides = {
@@ -83,7 +83,7 @@ describe('Stateless radiogroup', function() {
         <StyledRadio value="3">Third</StyledRadio>
       </RadioGroup>,
     );
-    const radio: any = require('./radio');
+    const radio: any = require('../radio');
     expect(radio.mock.calls[0][0].checked).toBeFalsy();
     expect(radio.mock.calls[1][0].checked).toBeTruthy();
     expect(radio.mock.calls[2][0].checked).toBeFalsy();

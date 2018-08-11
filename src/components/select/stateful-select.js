@@ -22,23 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 // @flow
-export {default as StatefulInput} from './stateful-input';
-export {default as StatefulContainer} from './stateful-container';
-export {default as Input} from './input';
-export {default as BaseInput} from './base-input';
+import React from 'react';
+// eslint-disable-next-line import/no-named-default
+import {default as StatefulContainer} from './stateful-select-container';
+// eslint-disable-next-line import/no-named-default
+import {default as Select} from './select';
+import type {PropsT, StatefulSelectPropsT} from './types';
 // Styled elements
-export {
-  Label as StyledLabel,
-  Root as StyledRoot,
-  InputEnhancer as StyledInputEnhancer,
-  InputContainer as StyledInputContainer,
-  Input as StyledInput,
-  Caption as StyledCaption,
-} from './styled-components';
 
-export {
-  STATE_CHANGE_TYPE,
-  ADJOINED,
-  SIZE,
-  CUSTOM_INPUT_TYPE,
-} from './constants';
+const StatefulSelect = function(props: StatefulSelectPropsT) {
+  return (
+    <StatefulContainer {...props}>
+      {(childrenProps: PropsT) => <Select {...childrenProps} />}
+    </StatefulContainer>
+  );
+};
+StatefulSelect.displayName = 'StatefulSelect';
+export default StatefulSelect;
